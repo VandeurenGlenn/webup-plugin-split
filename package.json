@@ -1,0 +1,77 @@
+{
+  "name": "webup-plugin-split",
+  "version": "1.0.0",
+  "main": "dist/split-node.js",
+  "module": "dist/split-es.js",
+  "keywords": [
+    "webup",
+    "plugin",
+    "split",
+    "webup-plugin",
+    "webup-plugin-split",
+    "webupplugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vandeurenglenn/webup-plugin-split.git"
+  },
+  "author": "Glenn Vandeuren <vandeurenglenn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vandeurenglenn/webup-plugin-split/issues"
+  },
+  "homepage": "https://github.com/vandeurenglenn/webup-plugin-split#readme",
+  "scripts": {
+    "build": "backed -b",
+    "test": "mocha"
+  },
+  "description": "",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "backed-cli": "^0.6.0",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "rollup-plugin-babel": "^2.7.1"
+  },
+  "backed": {
+    "bundles": [
+      {
+        "src": "src/split.js",
+        "dest": "dist/split.js",
+        "format": "cjs",
+        "plugins": {
+          "babel": {
+            "presets": [
+              [
+                "es2015",
+                {
+                  "modules": false
+                }
+              ]
+            ],
+            "plugins": [
+              "external-helpers"
+            ]
+          }
+        }
+      },
+      {
+        "src": "src/split.js",
+        "dest": "dist/split.js",
+        "format": "es",
+        "plugins": {
+          "babel": {
+            "presets": [
+              "es2016"
+            ],
+            "plugins": [
+              "external-helpers"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
